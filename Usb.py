@@ -23,6 +23,7 @@ class USB:
         written = self.ser.write(encodedData)
         sleep(1)
         sendandreceive = self.ser.read_all()
+        self.ser.reset_input_buffer()
         sendandreceive_size = sendandreceive.__sizeof__()
         response_raw = sendandreceive[written-1:sendandreceive_size-1]
         response_string = response_raw.decode(self.decodeFormat)
