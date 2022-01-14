@@ -1,4 +1,4 @@
 import sys
 
-def GET_FLATFORM():
+def get_sys_platform():
     return sys.platform
