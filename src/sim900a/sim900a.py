@@ -16,6 +16,9 @@ class Sim900a:
         - Send content to target phone number
         """
         phone_number = self.validate_phone_number(target)
+        if phone_number == None:
+            return
+        self.phone_number = "AT+CMGS=\""+ phone_number + "\""
 
 
         response = self.Usb.send(self.handshake)
@@ -40,4 +43,15 @@ class Sim900a:
         self.Usb.end_text()
 
     def validate_phone_number(self, phone_number):
-        return
+        if (phone_number[0:3] == "+84"):
+            print(phone_number[3:])
+            if (len(phone_number[3:]) != 9):
+                print("Oc cho nhap sdt cung sai, nhap lai di")
+            else:
+                return phone_number
+        elif (phone_number[0] == "0"):
+            if (len(phone_number[1:]) != 9):
+                print("Oc cho nhap sdt cung sai, nhap lai di")
+
+            else:
+                return "+84"+phone_number[1:]
