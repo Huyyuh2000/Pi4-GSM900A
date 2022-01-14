@@ -1,1 +1,0 @@
-# This folder for testing call python sricpt via terminal
